@@ -65,3 +65,4 @@ function searchBooks() {
     resultsDiv.textContent = "No results found.";
   }
 }
+
