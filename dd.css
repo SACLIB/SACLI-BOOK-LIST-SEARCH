@@ -5,7 +5,7 @@ body {
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
-  height: 90vh;
+  height: 110vh;
   font-family: Arial, sans-serif;
   color: rgb(15, 14, 14);
 }
@@ -67,6 +67,7 @@ button:hover {
 .hidden {
   display: none; /* default: nakatago */
 }
+
 
 
 
