@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('images.avif'); /* Palitan ng actual image path or URL */
+  background-image: url('images.png'); /* Palitan ng actual image path or URL */
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
@@ -58,4 +58,5 @@ button:hover {
 .hidden {
   display: none; /* default: nakatago */
 }
+
 
