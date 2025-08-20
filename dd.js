@@ -1,4 +1,5 @@
 let books = [];
+
 const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQU2jtuP__kcX5CGnotJ3s9GX2EQm2Ik11pHRIxFQs5WY_ExeQkDVBNlUP9GN8sGdpSH-ULBU6Zv2U3/pub?output=csv";
 
 async function loadBooks() {
@@ -6,10 +7,8 @@ async function loadBooks() {
     const response = await fetch(sheetUrl);
     const data = await response.text();
 
-    // I-parse CSV sa array of rows
     const rows = data.split("\n").map(row => row.split(","));
 
-    // Ignore empty or incomplete rows
     books = rows.slice(1)
                 .filter(row => row.length >= 6)
                 .map(row => ({
@@ -21,13 +20,10 @@ async function loadBooks() {
                   isbn: row[5].trim()
                 }));
 
-    // Enable search button kapag tapos na mag-load
     document.getElementById("searchBtn").disabled = false;
 
   } catch (error) {
     console.error("Error fetching books:", error);
-    document.getElementById("results").classList.remove("hidden");
-    document.getElementById("results").textContent = "Failed to load books data.";
   }
 }
 
@@ -52,8 +48,9 @@ function searchBooks() {
     book.isbn.toLowerCase().includes(query)
   );
 
+  resultsDiv.classList.remove("hidden");
+
   if (filtered.length > 0) {
-    resultsDiv.classList.remove("hidden");
     filtered.forEach(book => {
       const div = document.createElement("div");
       div.classList.add("book");
@@ -61,8 +58,6 @@ function searchBooks() {
       resultsDiv.appendChild(div);
     });
   } else {
-    resultsDiv.classList.remove("hidden");
     resultsDiv.textContent = "No results found.";
   }
 }
-
