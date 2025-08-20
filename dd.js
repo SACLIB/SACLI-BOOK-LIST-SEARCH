@@ -68,7 +68,8 @@ document.getElementById("searchBox").addEventListener("keypress", function(event
   if (event.key === "Enter") {
     searchBooks();
   }
-};
+}
+
 
 
 
