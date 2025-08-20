@@ -10,17 +10,20 @@ async function loadBooks() {
     const rows = data.split("\n").map(row => row.split(","));
 
     books = rows.slice(1)
-                .filter(row => row.length >= 6)
-                .map(row => ({
-                  title: row[0].trim(),
-                  author: row[1].trim(),
-                  publisher: row[2].trim(),
-                  copyright: row[3].trim(),
-                  edition: row[4].trim(),
-                  isbn: row[5].trim()
-                }));
+      .filter(row => row.length >= 6)
+      .map(row => ({
+        title: row[0].trim(),
+        author: row[1].trim(),
+        publisher: row[2].trim(),
+        copyright: row[3].trim(),
+        edition: row[4].trim(),
+        isbn: row[5].trim()
+      }));
 
-    document.getElementById("searchBtn").disabled = false;
+    const searchBtn = document.getElementById("searchBtn");
+    if (searchBtn) {
+      searchBtn.disabled = false;
+    }
 
   } catch (error) {
     console.error("Error fetching books:", error);
@@ -54,10 +57,28 @@ function searchBooks() {
     filtered.forEach(book => {
       const div = document.createElement("div");
       div.classList.add("book");
-      div.textContent = `${book.title} by ${book.author} | Publisher: ${book.publisher} | Copyright: ${book.copyright} | Edition: ${book.edition} | ISBN: ${book.isbn}`;
+
+    
+      div.innerHTML = `
+        <strong>Title:</strong> ${book.title}<br>
+        <strong>Author:</strong> ${book.author}<br>
+        <strong>Publisher:</strong> ${book.publisher}<br>
+        <strong>Copyright:</strong> ${book.copyright}<br>
+        <strong>Edition:</strong> ${book.edition}<br>
+        <strong>ISBN:</strong> ${book.isbn}
+      `;
+
       resultsDiv.appendChild(div);
     });
   } else {
     resultsDiv.textContent = "No results found.";
   }
 }
+
+// 🔑 Search when Enter key is pressed
+document.getElementById("searchBox").addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    searchBooks();
+  }
+});
+
