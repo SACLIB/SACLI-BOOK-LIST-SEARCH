@@ -10,16 +10,17 @@ async function loadBooks() {
     const rows = data.split("\n").map(row => row.split(","));
 
     books = rows.slice(1)
-                .filter(row => row.length >= 6)
-                .map(row => ({
-                  title: row[0].trim(),
-                  author: row[1].trim(),
-                  publisher: row[2].trim(),
-                  copyright: row[3].trim(),
-                  edition: row[4].trim(),
-                  isbn: row[5].trim()
-                }));
+      .filter(row => row.length >= 6)
+      .map(row => ({
+        title: row[0].trim(),
+        author: row[1].trim(),
+        publisher: row[2].trim(),
+        copyright: row[3].trim(),
+        edition: row[4].trim(),
+        isbn: row[5].trim()
+      }));
 
+    // Enable search button kapag tapos na mag-load
     document.getElementById("searchBtn").disabled = false;
 
   } catch (error) {
@@ -61,3 +62,12 @@ function searchBooks() {
     resultsDiv.textContent = "No results found.";
   }
 }
+
+// 🔑 Search when Enter is pressed in the search box
+document.getElementById("searchBox").addEventListener("keypress", function(event) {
+  if (event.key === "Enter") {
+    searchBooks();
+  }
+});
+
+
