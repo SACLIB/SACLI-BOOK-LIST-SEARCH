@@ -5,14 +5,14 @@ body {
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
-  height: 100vh;
+  height: 90vh;
   font-family: Arial, sans-serif;
   color: rgb(15, 14, 14);
 }
 
 .container {
   width: 95%;
-  max-width: 500px;
+  max-width: 600px;
   margin: 30px auto 20px;
   background: #fff;
   padding: 30px;
@@ -20,7 +20,10 @@ body {
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
-
+h1 {
+  font-size: 5vw;
+  padding: 30px;
+}
 input[type="text"] {
   width: 65%;
   padding: 12px;
@@ -118,4 +121,5 @@ button:hover {
     padding: 10px;
   }
 }
+
 
