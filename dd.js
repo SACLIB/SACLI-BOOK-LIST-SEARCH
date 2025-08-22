@@ -28,48 +28,67 @@ async function loadBooks() {
 
 loadBooks();
 
+function showLoading(show) {
+  const loadingDiv = document.getElementById("loading");
+  loadingDiv.style.display = show ? "block" : "none";
+}
+
 function searchBooks() {
   const query = document.getElementById("searchBox").value.trim().toLowerCase();
   const tbody = document.querySelector("#resultsTable tbody");
-  tbody.innerHTML = "";  // Clear previous results
+  
+  // Show loading spinner
+  showLoading(true);
+
+  // Clear previous results immediately
+  tbody.innerHTML = "";
 
   if (!query) {
+    showLoading(false);
     tbody.innerHTML = `
       <tr><td colspan="5" class="placeholder">No results yet. Please enter a search query.</td></tr>
     `;
     return;
   }
 
-  const filtered = books.filter(book =>
-    book.title.toLowerCase().includes(query) ||
-    book.author.toLowerCase().includes(query) ||
-    book.publisher.toLowerCase().includes(query) ||
-    book.edition.toLowerCase().includes(query)
-  );
+  // Delay para makita ang spinner kahit mabilis ang filter
+  setTimeout(() => {
+    const filtered = books.filter(book =>
+      book.title.toLowerCase().includes(query) ||
+      book.author.toLowerCase().includes(query) ||
+      book.publisher.toLowerCase().includes(query) ||
+      book.edition.toLowerCase().includes(query)
+    );
 
-  if (filtered.length === 0) {
-    tbody.innerHTML = `
-      <tr><td colspan="5" class="placeholder">No results found.</td></tr>
-    `;
-  } else {
-    filtered.forEach(book => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${book.title}</td>
-        <td>${book.author}</td>
-        <td>${book.publisher}</td>
-        <td>${book.copyright}</td>
-        <td>${book.edition}</td>
+    showLoading(false);
+
+    if (filtered.length === 0) {
+      tbody.innerHTML = `
+        <tr><td colspan="5" class="placeholder">No results found.</td></tr>
       `;
-      tbody.appendChild(tr);
-    });
-  }
+    } else {
+      filtered.forEach(book => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${book.title}</td>
+          <td>${book.author}</td>
+          <td>${book.publisher}</td>
+          <td>${book.copyright}</td>
+          <td>${book.edition}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  }, 300); // 300ms delay para may loading effect
 }
 
-// Trigger search when user presses Enter key
+// Search on Enter key press
 document.getElementById("searchBox").addEventListener("keypress", e => {
   if (e.key === "Enter") searchBooks();
 });
 
-// Bonus: Trigger search while typing
-document.getElementById("searchBox").addEventListener("input", searchBooks);
+// Search on button click
+document.getElementById("searchBtn").addEventListener("click", searchBooks);
+
+// Optional: Search while typing (comment out kung ayaw mo ng auto search habang nagta-type)
+// document.getElementById("searchBox").addEventListener("input", searchBooks);
