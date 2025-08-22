@@ -16,8 +16,7 @@ async function loadBooks() {
         author: row[1].trim(),
         publisher: row[2].trim(),
         copyright: row[3].trim(),
-        edition: row[4].trim(),
-        isbn: row[5].trim()
+        edition: row[4].trim()
       }));
 
     const searchBtn = document.getElementById("searchBtn");
@@ -55,8 +54,7 @@ function searchBooks() {
     book.author.toLowerCase().includes(query) ||
     book.publisher.toLowerCase().includes(query) ||
     book.copyright.toLowerCase().includes(query) ||
-    book.edition.toLowerCase().includes(query) ||
-    book.isbn.toLowerCase().includes(query)
+    book.edition.toLowerCase().includes(query)
   );
 
   if (filtered.length > 0) {
@@ -68,7 +66,6 @@ function searchBooks() {
         <td>${book.publisher}</td>
         <td>${book.copyright}</td>
         <td>${book.edition}</td>
-        <td>${book.isbn}</td>
       `;
       tbody.appendChild(tr);
     });
@@ -91,3 +88,4 @@ document.getElementById("searchBox").addEventListener("keypress", function (even
     searchBooks();
   }
 });
+
