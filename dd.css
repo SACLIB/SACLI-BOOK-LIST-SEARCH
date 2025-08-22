@@ -6,7 +6,7 @@ body {
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
-  height: 110vh;
+  height: 100vh;
   font-family: Arial, sans-serif;
   color: rgb(15, 14, 14);
 }
@@ -72,6 +72,10 @@ button:hover {
    📱 Cellphones (max-width: 600px)
 -------------------------------- */
 @media only screen and (max-width: 700px) {
+  body {
+  height: 90vh;
+}
+  
   .container {
     width: 75%;
     margin: 20px auto;
@@ -107,7 +111,9 @@ button:hover {
     width: 85%;
     padding: 20px;
   }
-
+  body {
+  height: 90vh;
+}
   h1 {
     font-size: 24px;
   }
@@ -120,6 +126,7 @@ button:hover {
     padding: 10px 20px;
   }
 }
+
 
 
 
