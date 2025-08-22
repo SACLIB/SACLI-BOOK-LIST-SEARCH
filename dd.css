@@ -87,7 +87,7 @@ button:hover {
   }
 
   input[type="text"] {
-    width: 90%;
+    width: 95%;
     margin: 10px 0;
   }
 
@@ -126,6 +126,7 @@ button:hover {
     padding: 10px 20px;
   }
 }
+
 
 
 
