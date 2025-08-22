@@ -31,10 +31,12 @@ loadBooks();
 function searchBooks() {
   const query = document.getElementById("searchBox").value.trim().toLowerCase();
   const tbody = document.querySelector("#resultsTable tbody");
-  tbody.innerHTML = "";
+  tbody.innerHTML = "";  // Clear previous results
 
   if (!query) {
-    tbody.innerHTML = `<tr><td colspan="5" class="placeholder">No results yet. Please enter a search query.</td></tr>`;
+    tbody.innerHTML = `
+      <tr><td colspan="5" class="placeholder">No results yet. Please enter a search query.</td></tr>
+    `;
     return;
   }
 
@@ -45,8 +47,10 @@ function searchBooks() {
     book.edition.toLowerCase().includes(query)
   );
 
-  if (!filtered.length) {
-    tbody.innerHTML = `<tr><td colspan="5" class="placeholder">No results found.</td></tr>`;
+  if (filtered.length === 0) {
+    tbody.innerHTML = `
+      <tr><td colspan="5" class="placeholder">No results found.</td></tr>
+    `;
   } else {
     filtered.forEach(book => {
       const tr = document.createElement("tr");
@@ -55,12 +59,17 @@ function searchBooks() {
         <td>${book.author}</td>
         <td>${book.publisher}</td>
         <td>${book.copyright}</td>
-        <td>${book.edition}</td>`;
+        <td>${book.edition}</td>
+      `;
       tbody.appendChild(tr);
     });
   }
 }
 
+// Trigger search when user presses Enter key
 document.getElementById("searchBox").addEventListener("keypress", e => {
   if (e.key === "Enter") searchBooks();
 });
+
+// Bonus: Trigger search while typing
+document.getElementById("searchBox").addEventListener("input", searchBooks);
