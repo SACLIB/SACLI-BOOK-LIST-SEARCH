@@ -1,37 +1,27 @@
-/* 💻 DEFAULT: For laptops and desktops */
 body {
   margin: 0;
   padding: 0;
-  background-image: url('images.PNG');
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
-  height: 100vh;
+  background: #f5f5f5 url('images.PNG') center/cover no-repeat;
   font-family: Arial, sans-serif;
-  color: rgb(15, 14, 14);
+  color: #222;
 }
 
 .container {
   width: 95%;
-  max-width: 600px;
-  margin: 30px auto 20px;
-  background: white;
+  max-width: 900px;
+  margin: 50px auto 20px;
+  background: #fff;
   padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   text-align: center;
-}
-
-h1 {
-  margin-bottom: 5px;
-  font-family: Georgia, serif;
 }
 
 input[type="text"] {
   width: 65%;
   padding: 12px;
   margin-right: 10px;
-  border: 1px solid #ccc;
+  border: 1.5px solid #ccc;
   border-radius: 4px;
 }
 
@@ -41,28 +31,28 @@ button {
   color: white;
   border: none;
   border-radius: 4px;
+  font-weight: 600;
   cursor: pointer;
+  transition: background-color 0.3s;
 }
 
 button:hover {
   background: #218838;
 }
 
-/* 📋 Table Container */
 #results {
   width: 95%;
   max-width: 1000px;
   margin: 20px auto 50px;
-  padding: 20px;
-  background: white;
+  background: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 20px;
   max-height: 500px;
   overflow-y: auto;
 }
 
-/* 📊 Table Styling */
 #resultsTable {
   width: 100%;
   border-collapse: collapse;
@@ -75,50 +65,40 @@ button:hover {
   text-align: left;
 }
 
-/* 📝 Specific Column Widths */
-#resultsTable th:nth-child(1),
-#resultsTable td:nth-child(1) {
-  width: 40%;
-  font-weight: bold;
-}
-
-#resultsTable th:nth-child(2),
-#resultsTable td:nth-child(2),
-#resultsTable th:nth-child(3),
-#resultsTable td:nth-child(3) {
-  width: 15%;
-}
-
-#resultsTable th:nth-child(4),
-#resultsTable td:nth-child(4),
-#resultsTable th:nth-child(5),
-#resultsTable td:nth-child(5),
-#resultsTable th:nth-child(6),
-#resultsTable td:nth-child(6) {
-  width: 10%;
-  font-size: 14px;
-}
-
 #resultsTable th {
   background-color: #f2f2f2;
   font-weight: 600;
 }
 
-/* 📱 Responsive (Mobile) */
+/* Column width adjustments */
+#resultsTable th:nth-child(1),
+#resultsTable td:nth-child(1) { width: 40%; }
+#resultsTable th:nth-child(2),
+#resultsTable td:nth-child(2),
+#resultsTable th:nth-child(3),
+#resultsTable td:nth-child(3) { width: 18%; }
+#resultsTable th:nth-child(4),
+#resultsTable td:nth-child(4),
+#resultsTable th:nth-child(5),
+#resultsTable td:nth-child(5) { width: 11%; }
+
+/* Placeholder styling */
+.placeholder {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+/* Mobile responsive tweaks */
 @media only screen and (max-width: 700px) {
-  .container {
+  .container, #results {
     width: 90%;
     padding: 20px;
   }
 
-  input[type="text"] {
+  input[type="text"], button {
     width: 100%;
-    margin: 10px 0;
-  }
-
-  button {
-    width: 100%;
-    padding: 12px;
+    margin: 5px 0;
   }
 
   #results {
@@ -127,12 +107,10 @@ button:hover {
   }
 
   #resultsTable {
-    font-size: 13px;
+    font-size: 14px;
   }
 
   #resultsTable th, #resultsTable td {
     padding: 10px;
   }
 }
-
-
