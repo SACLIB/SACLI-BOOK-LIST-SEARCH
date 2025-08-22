@@ -35,10 +35,18 @@ loadBooks();
 function searchBooks() {
   const query = document.getElementById("searchBox").value.trim().toLowerCase();
   const resultsDiv = document.getElementById("results");
-  resultsDiv.innerHTML = "";
+  const tbody = document.querySelector("#resultsTable tbody");
+  tbody.innerHTML = "";
 
   if (query === "") {
-    resultsDiv.classList.add("hidden");
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6" style="text-align:center; font-style: italic; color: #666;">
+          No results yet. Please enter a search query.
+        </td>
+      </tr>
+    `;
+    resultsDiv.style.display = "block";
     return;
   }
 
@@ -51,35 +59,35 @@ function searchBooks() {
     book.isbn.toLowerCase().includes(query)
   );
 
-  resultsDiv.classList.remove("hidden");
-
   if (filtered.length > 0) {
     filtered.forEach(book => {
-      const div = document.createElement("div");
-      div.classList.add("book");
-
-    
-      div.innerHTML = `
-        <strong>Title:</strong> ${book.title}<br>
-        <strong>Author:</strong> ${book.author}<br>
-        <strong>Publisher:</strong> ${book.publisher}<br>
-        <strong>Copyright:</strong> ${book.copyright}<br>
-        <strong>Edition:</strong> ${book.edition}<br>
-        <strong>ISBN:</strong> ${book.isbn}
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.publisher}</td>
+        <td>${book.copyright}</td>
+        <td>${book.edition}</td>
+        <td>${book.isbn}</td>
       `;
-
-      resultsDiv.appendChild(div);
+      tbody.appendChild(tr);
     });
   } else {
-    resultsDiv.textContent = "No results found.";
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="6" style="text-align:center; font-style: italic; color: #666;">
+          No results found.
+        </td>
+      </tr>
+    `;
   }
+
+  resultsDiv.style.display = "block";
 }
 
-// 🔑 Search when Enter key is pressed
+// Enter key triggers search
 document.getElementById("searchBox").addEventListener("keypress", function (event) {
   if (event.key === "Enter") {
     searchBooks();
   }
 });
-
-
