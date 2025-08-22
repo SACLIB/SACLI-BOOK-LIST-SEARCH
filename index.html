@@ -12,11 +12,16 @@
   <!-- Search Form -->
   <div class="container">
     <h1>SACLI Library OPAC</h1>
-    <input type="text" id="searchBox" placeholder="Search by Title or Author..." />
+    <input
+      type="text"
+      id="searchBox"
+      placeholder="Search by Title or Author..."
+      autofocus
+    />
     <button id="searchBtn" onclick="searchBooks()">Search</button>
   </div>
 
-  <!-- Search Results Table -->
+  <!-- Results Table (Visible by Default) -->
   <div id="results">
     <table id="resultsTable">
       <thead>
@@ -30,7 +35,7 @@
       </thead>
       <tbody>
         <tr>
-          <td colspan="6" style="text-align:center; font-style: italic; color: #666;">
+          <td colspan="5" class="placeholder">
             No results yet. Please enter a search query.
           </td>
         </tr>
@@ -41,4 +46,3 @@
   <script src="dd.js"></script>
 </body>
 </html>
-
