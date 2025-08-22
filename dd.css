@@ -1,8 +1,8 @@
-/* 🔷 DEFAULT: For laptops and desktops (min-width: 1025px and up) */
+/* 💻 DEFAULT: For laptops and desktops */
 body {
   margin: 0;
   padding: 0;
-  background-image: url('images.PNG'); 
+  background-image: url('images.PNG');
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
@@ -12,31 +12,31 @@ body {
 }
 
 .container {
-  width: 90%;
-  max-width: 500px;
-  margin: 50px auto;
+  width: 95%;
+  max-width: 600px;
+  margin: 50px auto 20px;
   background: white;
-  padding: 20px;
+  padding: 30px;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 15px rgba(0,0,0,0.15);
+  text-align: center;
 }
 
 h1 {
-  text-align: center;
   margin-bottom: 20px;
   font-family: Georgia, serif;
 }
 
 input[type="text"] {
-  width: 75%;
-  padding: 10px;
-  margin-right: 5px;
+  width: 65%;
+  padding: 12px;
+  margin-right: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
 }
 
 button {
-  padding: 10px 15px;
+  padding: 12px 20px;
   background: #28a745;
   color: white;
   border: none;
@@ -48,88 +48,89 @@ button:hover {
   background: #218838;
 }
 
+/* 📋 Table Container */
 #results {
-  margin-top: 30px;
-  max-height: 400px;    
-  overflow-y: auto;      
-  padding-right: 10px;   
+  width: 95%;
+  max-width: 1000px;
+  margin: 20px auto 50px;
+  padding: 20px;
+  background: white;
   border: 1px solid #ccc;
-  border-radius: 5px;
-  background-color: rgba(255, 255, 255, 0.05);
-  line-height: 1.5;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  max-height: 500px;
+  overflow-y: auto;
 }
 
-.book {
-  padding: 10px;
-  border-bottom: 1px solid #ddd;
+/* 📊 Table Styling */
+#resultsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
 }
 
-.hidden {
-  display: none;
+#resultsTable th, #resultsTable td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: left;
 }
 
-/* -------------------------------
-   📱 Cellphones (max-width: 600px)
--------------------------------- */
+/* 📝 Specific Column Widths */
+#resultsTable th:nth-child(1),
+#resultsTable td:nth-child(1) {
+  width: 40%;
+  font-weight: bold;
+}
+
+#resultsTable th:nth-child(2),
+#resultsTable td:nth-child(2),
+#resultsTable th:nth-child(3),
+#resultsTable td:nth-child(3) {
+  width: 15%;
+}
+
+#resultsTable th:nth-child(4),
+#resultsTable td:nth-child(4),
+#resultsTable th:nth-child(5),
+#resultsTable td:nth-child(5),
+#resultsTable th:nth-child(6),
+#resultsTable td:nth-child(6) {
+  width: 10%;
+  font-size: 14px;
+}
+
+#resultsTable th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+}
+
+/* 📱 Responsive (Mobile) */
 @media only screen and (max-width: 700px) {
-  body {
-  height: 90vh;
-}
-  
   .container {
-    width: 75%;
-    margin: 20px auto;
-    padding: 15px;
-    margin: 80px auto;
-  }
-  
-  h1 {
-    font-size: 20px;
+    width: 90%;
+    padding: 20px;
   }
 
   input[type="text"] {
-    width: 94%;
+    width: 100%;
     margin: 10px 0;
   }
 
   button {
     width: 100%;
     padding: 12px;
-    margin-top: 5px;
   }
 
   #results {
     max-height: 600px;
     font-size: 14px;
   }
-}
 
-/* -------------------------------
-   💻 Tablets (601px–1024px)
--------------------------------- */
-@media only screen and (min-width: 701px) and (max-width: 1024px) {
-  .container {
-    width: 85%;
-    padding: 20px;
-  }
-  body {
-  height: 90vh;
-}
-  h1 {
-    font-size: 24px;
+  #resultsTable {
+    font-size: 13px;
   }
 
-  input[type="text"] {
-    width: 70%;
-  }
-
-  button {
-    padding: 10px 20px;
+  #resultsTable th, #resultsTable td {
+    padding: 10px;
   }
 }
-
-
-
-
-
-
