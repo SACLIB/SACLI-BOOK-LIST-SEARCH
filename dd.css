@@ -23,7 +23,7 @@ body {
 }
 
 h1 {
-  margin-bottom: 20px;
+  margin-bottom: 5px;
   font-family: Georgia, serif;
 }
 
@@ -134,4 +134,5 @@ button:hover {
     padding: 10px;
   }
 }
+
 
