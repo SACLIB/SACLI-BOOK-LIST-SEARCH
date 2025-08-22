@@ -1,7 +1,8 @@
+/* 🔷 DEFAULT: For laptops and desktops (min-width: 1025px and up) */
 body {
   margin: 0;
   padding: 0;
-  background-image: url('images.PNG'); /* Palitan ng actual image path or URL */
+  background-image: url('images.PNG'); 
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
@@ -24,7 +25,6 @@ h1 {
   text-align: center;
   margin-bottom: 20px;
   font-family: Georgia, serif;
-
 }
 
 input[type="text"] {
@@ -56,7 +56,7 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: rgba(255, 255, 255, 0.05);
-  line-height: 1.5
+  line-height: 1.5;
 }
 
 .book {
@@ -65,16 +65,58 @@ button:hover {
 }
 
 .hidden {
-  display: none; /* default: nakatago */
+  display: none;
 }
 
+/* -------------------------------
+   📱 Cellphones (max-width: 600px)
+-------------------------------- */
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 95%;
+    margin: 20px auto;
+    padding: 15px;
+  }
 
+  h1 {
+    font-size: 20px;
+  }
 
+  input[type="text"] {
+    width: 100%;
+    margin: 10px 0;
+  }
 
+  button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+  }
 
+  #results {
+    max-height: 300px;
+    font-size: 14px;
+  }
+}
 
+/* -------------------------------
+   💻 Tablets (601px–1024px)
+-------------------------------- */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .container {
+    width: 85%;
+    padding: 20px;
+  }
 
+  h1 {
+    font-size: 24px;
+  }
 
+  input[type="text"] {
+    width: 70%;
+  }
 
-
-
+  button {
+    padding: 10px 20px;
+  }
+}
