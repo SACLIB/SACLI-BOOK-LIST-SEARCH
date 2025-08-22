@@ -1,29 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SACLI Library OPAC</title>
-
-  <link rel="icon" type="image/png" href="favicon.png">
-  
-  <link rel="stylesheet" href="dd.css">
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="stylesheet" href="dd.css" />
 </head>
 <body>
+
+  <!-- Search Form -->
   <div class="container">
     <h1>SACLI Library OPAC</h1>
-    <input type="text" id="searchBox" placeholder="Search by Title or Author...">
+    <input type="text" id="searchBox" placeholder="Search by Title or Author..." />
     <button id="searchBtn" onclick="searchBooks()">Search</button>
-    
-   
-    <div id="results" class="hidden"></div>
   </div>
+
+  <!-- Search Results Table -->
+  <div id="results">
+    <table id="resultsTable">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Publisher</th>
+          <th>Copyright</th>
+          <th>Edition</th>
+          <th>ISBN</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td colspan="6" style="text-align:center; font-style: italic; color: #666;">
+            No results yet. Please enter a search query.
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
   <script src="dd.js"></script>
 </body>
 </html>
-
-
-
-
-
-
