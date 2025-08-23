@@ -63,7 +63,7 @@ button:hover {
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
   padding: 20px;
-  max-height: 400px;
+  max-height: 500px;
   overflow-y: auto;
 }
 
@@ -98,9 +98,9 @@ button:hover {
 #resultsTable th:nth-child(4),
 #resultsTable td:nth-child(4),
 #resultsTable th:nth-child(5),
-#resultsTable td:nth-child(5) { width: 10%; }
+#resultsTable td:nth-child(5) { width: 5%; }
 #resultsTable th:nth-child(6),
-#resultsTable td:nth-child(6) { width: 15%; } /* Copies column */
+#resultsTable td:nth-child(6) { width: 5%; } /* Copies column */
 
 .placeholder {
   text-align: center;
@@ -154,3 +154,4 @@ button:hover {
     padding: 10px;
   }
 }
+
