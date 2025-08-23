@@ -122,3 +122,4 @@ document.getElementById("searchBox").addEventListener("keypress", e => {
 
 // Search on button click
 document.getElementById("searchBtn").addEventListener("click", searchBooks);
+
