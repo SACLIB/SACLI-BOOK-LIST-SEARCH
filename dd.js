@@ -2,7 +2,7 @@ let books = [];
 
 const sheetUrl = "https://docs.google.com/spreadsheets/d/1kNUtwm8mg-3VsmqFXeGDmf5tHF-jDmSpnUA3uliRnO8/export?format=csv&gid=0";
 
-// Helper function to parse CSV safely (handles commas inside quotes)
+// Helper function to parse CSV safely
 function parseCSV(text) {
   const rows = [];
   let insideQuotes = false;
@@ -11,7 +11,7 @@ function parseCSV(text) {
 
   for (let i = 0; i < text.length; i++) {
     const char = text[i];
-    const nextChar = text[i+1];
+    const nextChar = text[i + 1];
 
     if (char === '"') {
       insideQuotes = !insideQuotes;
@@ -19,7 +19,7 @@ function parseCSV(text) {
       row.push(cell);
       cell = '';
     } else if ((char === '\n' || char === '\r') && !insideQuotes) {
-      if (char === '\r' && nextChar === '\n') i++; // skip CRLF
+      if (char === '\r' && nextChar === '\n') i++;
       row.push(cell);
       rows.push(row);
       row = [];
@@ -28,11 +28,12 @@ function parseCSV(text) {
       cell += char;
     }
   }
-  // Push last cell/row if exists
+
   if (cell !== '' || row.length > 0) {
     row.push(cell);
     rows.push(row);
   }
+
   return rows;
 }
 
@@ -44,8 +45,8 @@ async function loadBooks() {
     const parsed = parseCSV(text);
 
     books = parsed
-      .slice(1) // skip header row
-      .filter(row => row.length >= 6) // at least 6 columns now
+      .slice(1)
+      .filter(row => row.length >= 6)
       .map(row => ({
         title: row[0].trim(),
         author: row[1].trim(),
@@ -115,11 +116,51 @@ function searchBooks() {
   }, 300);
 }
 
-// Search on Enter key press
-document.getElementById("searchBox").addEventListener("keypress", e => {
-  if (e.key === "Enter") searchBooks();
+// Autocomplete functionality
+const searchBox = document.getElementById("searchBox");
+const suggestionsBox = document.getElementById("suggestions");
+
+searchBox.addEventListener("input", () => {
+  const query = searchBox.value.trim().toLowerCase();
+  suggestionsBox.innerHTML = "";
+  suggestionsBox.style.display = "none";
+
+  if (!query) return;
+
+  const suggestions = new Set();
+
+  books.forEach(book => {
+    if (book.title.toLowerCase().includes(query)) suggestions.add(book.title);
+    if (book.author.toLowerCase().includes(query)) suggestions.add(book.author);
+    if (book.publisher.toLowerCase().includes(query)) suggestions.add(book.publisher);
+  });
+
+  const matches = Array.from(suggestions).slice(0, 10);
+
+  if (matches.length > 0) {
+    suggestionsBox.style.display = "block";
+    matches.forEach(match => {
+      const div = document.createElement("div");
+      div.textContent = match;
+      div.addEventListener("click", () => {
+        searchBox.value = match;
+        suggestionsBox.innerHTML = "";
+        suggestionsBox.style.display = "none";
+        searchBooks();
+      });
+      suggestionsBox.appendChild(div);
+    });
+  }
 });
 
-// Search on button click
-document.getElementById("searchBtn").addEventListener("click", searchBooks);
+document.addEventListener("click", (e) => {
+  if (e.target !== searchBox && e.target.parentNode !== suggestionsBox) {
+    suggestionsBox.innerHTML = "";
+    suggestionsBox.style.display = "none";
+  }
+});
 
+// Search on Enter key press
+searchBox.addEventListener("keypress", e => {
+  if (e.key === "Enter") searchBooks();
+});
