@@ -12,12 +12,18 @@
   <!-- Search Form -->
   <div class="container">
     <h1>SACLI Library OPAC</h1>
-    <input
-      type="text"
-      id="searchBox"
-      placeholder="Search by Title or Author..."
-      autofocus
-    />
+
+    <!-- Wrap input and suggestions -->
+    <div style="position: relative; display: inline-block; width: 65%;">
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="Search by Title or Author..."
+        autofocus
+      />
+      <div id="suggestions" class="suggestions-box"></div>
+    </div>
+
     <button id="searchBtn" onclick="searchBooks()">Search</button>
 
     <!-- Loading Spinner -->
