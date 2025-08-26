@@ -12,20 +12,23 @@
   <!-- Search Form -->
   <div class="container">
     <h1>SACLI Library OPAC</h1>
-    <input
-      type="text"
-      id="searchBox"
-      placeholder="Search by Title or Author..."
-      autocomplete="off"
-      autofocus
-    />
-    <!-- Suggestions dropdown -->
-    <div id="suggestions" class="suggestions"></div>
+    
+    <!-- Search box wrapper for alignment -->
+    <div class="search-wrapper">
+      <input
+        type="text"
+        id="searchBox"
+        placeholder="Search by Title or Author..."
+        autocomplete="off"
+        autofocus
+      />
+      <div id="suggestions" class="suggestions"></div>
+    </div>
 
-    <button id="searchBtn" onclick="searchBooks()">Search</button>
+    <button id="searchBtn">Search</button>
 
     <!-- Loading Spinner -->
-    <div id="loading" style="display:none; margin-top: 10px; text-align:center;">
+    <div id="loading">
       <div class="spinner"></div>
     </div>
   </div>
@@ -40,7 +43,7 @@
           <th>Publisher</th>
           <th>Copyright</th>
           <th>Edition</th>
-          <th>Copies</th> 
+          <th>Copies</th>
         </tr>
       </thead>
       <tbody>
