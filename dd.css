@@ -23,7 +23,6 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   text-align: center;
-  position: relative; /* needed for suggestions absolute positioning */
 }
 
 h1 {
@@ -124,34 +123,6 @@ button:hover {
   to {
     transform: rotate(360deg);
   }
-}
-
-/* Suggestions dropdown box */
-.suggestions {
-  position: absolute;
-  background: white;
-  border: none;
-  border-top: none;
-  max-height: auto;
-  overflow-y: auto;
-  width: 65%; /* match input width */
-  margin: 0 auto;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  display: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  border-radius: 0 0 4px 4px;
-}
-
-/* Each suggestion item */
-.suggestions div {
-  padding: 10px;
-  cursor: pointer;
-}
-
-.suggestions div:hover {
-  background-color: #f1f1f1;
 }
 
 /* Mobile responsive tweaks */
