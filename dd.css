@@ -1,38 +1,11 @@
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  background-image: url('images.PNG');
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
-  height: 100vh;
-  font-family: Arial, sans-serif;
-  color: rgb(15, 14, 14);
-}
-
-.container {
-  width: 95%;
-  max-width: 600px;
-  margin: 20px auto 10px;
-  background: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
+/* Spinner initially hidden */
+#loading {
+  display: none;
+  margin-top: 15px;
   text-align: center;
-  position: relative;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
-/* Wrapper to align input and suggestion box */
+/* Wrapper for search input + button */
 .search-wrapper {
   position: relative;
   width: 100%;
@@ -40,28 +13,50 @@ h1 {
   margin: 0 auto 15px;
 }
 
-input[type="text"] {
-  width: 100%;
+/* Flex row to align input and button side-by-side */
+.search-row {
+  display: flex;
+  gap: 10px;
+}
+
+/* Input stretches to take available space */
+.search-row input[type="text"] {
+  flex: 1;
   padding: 12px;
   border: 1.5px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
 }
 
+/* Keep button aligned */
+.search-row button {
+  padding: 12px 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  white-space: nowrap;
+}
+
+.search-row button:hover {
+  background: #218838;
+}
+
+/* Suggestions box styling */
 .suggestions {
   position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  background: #fff;
+  background: white;
   border: 1px solid #ccc;
   border-top: none;
-  max-height: 300px;
-  overflow-y: auto;
-  display: none;
+  max-height: 400px;
+  width: 100%;
   z-index: 1000;
-  border-radius: 0 0 4px 4px;
+  display: none;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 0 0 4px 4px;
+  overflow-y: auto;
 }
 
 .suggestions div {
@@ -73,128 +68,18 @@ input[type="text"] {
   background-color: #f1f1f1;
 }
 
-button {
-  padding: 12px 20px;
-  background: #28a745;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-button:hover {
-  background: #218838;
-}
-
-#loading {
-  display: none;
-  margin-top: 15px;
-  text-align: center;
-}
-
-.spinner {
-  width: 40px;
-  height: 40px;
-  border: 5px solid #ccc;
-  border-top: 5px solid #28a745;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-  margin: 0 auto;
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#results {
-  width: 95%;
-  max-width: 1000px;
-  margin: 10px auto 50px;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  padding: 20px;
-  max-height: 465px;
-  overflow-y: auto;
-}
-
-#resultsTable {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 16px;
-}
-
-#resultsTable th, #resultsTable td {
-  border: 1px solid #ccc;
-  padding: 12px 15px;
-  text-align: center;
-}
-
-#resultsTable th {
-  background-color: #f2f2f2;
-  font-weight: 600;
-}
-
-#resultsTable tbody tr:hover {
-  background-color: #f9f9f9;
-}
-
-#resultsTable th:nth-child(1),
-#resultsTable td:nth-child(1) { width: 35%; }
-
-#resultsTable th:nth-child(2),
-#resultsTable td:nth-child(2),
-#resultsTable th:nth-child(3),
-#resultsTable td:nth-child(3) { width: 15%; }
-
-#resultsTable th:nth-child(4),
-#resultsTable td:nth-child(4),
-#resultsTable th:nth-child(5),
-#resultsTable td:nth-child(5) { width: 5%; }
-
-#resultsTable th:nth-child(6),
-#resultsTable td:nth-child(6) { width: 5%; }
-
-.placeholder {
-  text-align: center;
-  font-style: italic;
-  color: #666;
-}
-
-/* Responsive */
+/* Responsive fix */
 @media only screen and (max-width: 700px) {
-  .container,
-  #results {
-    width: 90%;
-    padding: 15px;
+  .search-row {
+    flex-direction: column;
   }
 
-  input[type="text"],
-  button {
+  .search-row input,
+  .search-row button {
     width: 100%;
-    margin: 5px 0;
-    display: block;
-  }
-
-  .search-wrapper {
-    width: 100%;
-  }
-
-  #resultsTable {
-    font-size: 14px;
-  }
-
-  #resultsTable th,
-  #resultsTable td {
-    padding: 10px;
   }
 
   .suggestions {
-    max-height: 200px;
+    width: 100%;
   }
 }
