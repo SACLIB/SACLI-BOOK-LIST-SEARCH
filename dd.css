@@ -1,34 +1,45 @@
-/* Spinner initially hidden */
-#loading {
-  display: none;
-  margin-top: 15px;
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url('images.PNG'); 
+  background-size: cover;
+  background-position: left;
+  background-repeat: no-repeat;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  color: rgb(15, 14, 14);
+}
+
+.container {
+  width: 95%;
+  max-width: 600px;
+  margin: 10px auto 5px;
+  background: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
-/* Wrapper for search input + button */
-.search-wrapper {
-  position: relative;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto 15px;
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* Flex row to align input and button side-by-side */
-.search-row {
-  display: flex;
-  gap: 10px;
-}
-
-/* Input stretches to take available space */
-.search-row input[type="text"] {
-  flex: 1;
+input[type="text"] {
+  width: 65%;
   padding: 12px;
+  margin-right: 10px;
   border: 1.5px solid #ccc;
   border-radius: 4px;
 }
 
-/* Keep button aligned */
-.search-row button {
+button {
   padding: 12px 20px;
   background: #28a745;
   color: white;
@@ -37,49 +48,109 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s;
-  white-space: nowrap;
 }
 
-.search-row button:hover {
+button:hover {
   background: #218838;
 }
 
-/* Suggestions box styling */
-.suggestions {
-  position: absolute;
-  background: white;
+#results {
+  width: 95%;
+  max-width: 1000px;
+  margin: 1px auto 50px;
+  background: #fff;
   border: 1px solid #ccc;
-  border-top: none;
-  max-height: 400px;
-  width: 100%;
-  z-index: 1000;
-  display: none;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  border-radius: 0 0 4px 4px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  max-height: 465px;
   overflow-y: auto;
 }
 
-.suggestions div {
-  padding: 10px;
-  cursor: pointer;
+#resultsTable {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 16px;
 }
 
-.suggestions div:hover {
-  background-color: #f1f1f1;
+#resultsTable th, #resultsTable td {
+  border: 1px solid #ccc;
+  padding: 12px 15px;
+  text-align: center;
 }
 
-/* Responsive fix */
+#resultsTable th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+}
+
+#resultsTable tbody tr:hover {
+  background-color: #f9f9f9;
+}
+
+/* Column width adjustments */
+#resultsTable th:nth-child(1),
+#resultsTable td:nth-child(1) { width: 35%; }
+#resultsTable th:nth-child(2),
+#resultsTable td:nth-child(2),
+#resultsTable th:nth-child(3),
+#resultsTable td:nth-child(3) { width: 15%; }
+#resultsTable th:nth-child(4),
+#resultsTable td:nth-child(4),
+#resultsTable th:nth-child(5),
+#resultsTable td:nth-child(5) { width: 5%; }
+#resultsTable th:nth-child(6),
+#resultsTable td:nth-child(6) { width: 5%; } /* Copies column */
+
+.placeholder {
+  text-align: center;
+  font-style: italic;
+  color: #666;
+}
+
+/* Spinner Style */
+.spinner {
+  margin: 0 auto;
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #28a745;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Mobile responsive tweaks */
 @media only screen and (max-width: 700px) {
-  .search-row {
-    flex-direction: column;
+  .container,
+  #results {
+    width: 90%;
+    padding: 20px;
   }
 
-  .search-row input,
-  .search-row button {
+  input[type="text"],
+  button {
     width: 100%;
+    display: block;
+    margin: 5px auto;
   }
 
-  .suggestions {
-    width: 100%;
+  #results {
+    max-height: 600px;
+    font-size: 14px;
+  }
+
+  #resultsTable {
+    font-size: 14px;
+  }
+
+  #resultsTable th,
+  #resultsTable td {
+    padding: 10px;
   }
 }
