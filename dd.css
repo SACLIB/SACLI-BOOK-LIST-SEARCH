@@ -32,7 +32,7 @@ h1 {
 }
 
 input[type="text"] {
-  width: 65%;
+  width: 75%;
   padding: 12px;
   margin-right: 10px;
   border: 1.5px solid #ccc;
@@ -129,7 +129,7 @@ button:hover {
   background: white;
   border: 1px solid #ccc;
   border-top: none;
-  max-height: 300px;
+  max-height: 400px;
   overflow-y: auto;
   width: 35%;
   left: 0;
@@ -179,5 +179,6 @@ button:hover {
     padding: 10px;
   }
 }
+
 
 
