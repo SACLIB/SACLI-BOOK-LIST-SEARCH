@@ -137,7 +137,7 @@ searchBox.addEventListener("input", () => {
     if (book.author.toLowerCase().includes(query)) suggestions.add(book.author);
   });
 
-  const matches = Array.from(suggestions).slice(0, 10);
+  const matches = Array.from(suggestions).slice(0, 8);
 
   if (matches.length > 0) {
     suggestionsBox.style.display = "block";
@@ -170,3 +170,4 @@ searchBox.addEventListener("keypress", e => {
 });
 
 // Button click already handled in HTML (onclick)
+
