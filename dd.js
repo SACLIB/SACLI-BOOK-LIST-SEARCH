@@ -28,6 +28,7 @@ function parseCSV(text) {
       cell += char;
     }
   }
+  // Push last cell/row if exists
   if (cell !== '' || row.length > 0) {
     row.push(cell);
     rows.push(row);
@@ -38,20 +39,13 @@ function parseCSV(text) {
 async function loadBooks() {
   try {
     const response = await fetch(sheetUrl);
-
-    if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
-    }
-
     const text = await response.text();
-    console.log("✅ CSV RAW TEXT:", text.slice(0, 200) + "..."); // Preview lang
 
     const parsed = parseCSV(text);
-    console.log("✅ PARSED DATA SAMPLE:", parsed.slice(0, 3)); // preview 3 rows
 
     books = parsed
       .slice(1) // skip header row
-      .filter(row => row.length >= 6) // at least 6 columns
+      .filter(row => row.length >= 6) // at least 6 columns now
       .map(row => ({
         title: row[0].trim(),
         author: row[1].trim(),
@@ -61,16 +55,9 @@ async function loadBooks() {
         copies: row[5].trim(),
       }));
 
-    console.log("✅ BOOKS ARRAY:", books);
-
-    if (books.length === 0) {
-      console.warn("⚠️ WALANG LAMAN ANG BOOKS ARRAY. Baka walang laman ang CSV o mali ang format.");
-    }
-
     document.getElementById("searchBtn").disabled = false;
-
   } catch (error) {
-    console.error("❌ ERROR fetching or parsing CSV:", error);
+    console.error("Error fetching data:", error);
   }
 }
 
@@ -135,5 +122,3 @@ document.getElementById("searchBox").addEventListener("keypress", e => {
 
 // Search on button click
 document.getElementById("searchBtn").addEventListener("click", searchBooks);
-
-
