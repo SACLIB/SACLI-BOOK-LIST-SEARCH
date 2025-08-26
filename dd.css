@@ -23,6 +23,7 @@ body {
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   text-align: center;
+  position: relative; /* needed for suggestions absolute positioning */
 }
 
 h1 {
@@ -125,6 +126,34 @@ button:hover {
   }
 }
 
+/* Suggestions dropdown box */
+.suggestions {
+  position: absolute;
+  background: white;
+  border: none;
+  border-top: none;
+  max-height: auto;
+  overflow-y: auto;
+  width: 65%; /* match input width */
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 0 0 4px 4px;
+}
+
+/* Each suggestion item */
+.suggestions div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions div:hover {
+  background-color: #f1f1f1;
+}
+
 /* Mobile responsive tweaks */
 @media only screen and (max-width: 700px) {
   .container,
@@ -154,37 +183,3 @@ button:hover {
     padding: 10px;
   }
 }
-
-/* Suggestions Box Styling */
-.suggestions-box {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  width: 100%;
-  max-height: 200px;
-  overflow-y: auto;
-  background: #fff;
-  border: 1px solid #ccc;
-  border-top: none;
-  z-index: 999;
-  border-radius: 0 0 4px 4px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-  font-size: 16px;
-  text-align: left;
-}
-
-.suggestions-box div {
-  padding: 10px;
-  cursor: pointer;
-  border-bottom: 1px solid #eee;
-}
-
-.suggestions-box div:last-child {
-  border-bottom: none;
-}
-
-.suggestions-box div:hover {
-  background-color: #f1f1f1;
-}
-
-
