@@ -1,6 +1,6 @@
 let books = [];
 
-const sheetUrl = "https://docs.google.com/spreadsheets/d/1G1TTj7OfvibkAzXu6IbsWSfS7zBx8X7JbX3HCTnwTLE/export?format=csv&gid=0";
+const sheetUrl = "https://docs.google.com/spreadsheets/d/1kNUtwm8mg-3VsmqFXeGDmf5tHF-jDmSpnUA3uliRnO8/export?format=csv&gid=0";
 
 // Helper function to parse CSV safely (handles commas inside quotes)
 function parseCSV(text) {
@@ -122,3 +122,4 @@ document.getElementById("searchBox").addEventListener("keypress", e => {
 
 // Search on button click
 document.getElementById("searchBtn").addEventListener("click", searchBooks);
+
