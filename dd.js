@@ -69,8 +69,15 @@ function showLoading(show) {
   loadingDiv.style.display = show ? "block" : "none";
 }
 
+const searchBox = document.getElementById("searchBox");
+const suggestionsBox = document.getElementById("suggestions");
+
 function searchBooks() {
-  const query = document.getElementById("searchBox").value.trim().toLowerCase();
+  // Hide suggestions when search starts
+  suggestionsBox.innerHTML = "";
+  suggestionsBox.style.display = "none";
+
+  const query = searchBox.value.trim().toLowerCase();
   const tbody = document.querySelector("#resultsTable tbody");
 
   showLoading(true);
@@ -117,9 +124,6 @@ function searchBooks() {
 }
 
 // Autocomplete functionality
-const searchBox = document.getElementById("searchBox");
-const suggestionsBox = document.getElementById("suggestions");
-
 searchBox.addEventListener("input", () => {
   const query = searchBox.value.trim().toLowerCase();
   suggestionsBox.innerHTML = "";
@@ -153,6 +157,7 @@ searchBox.addEventListener("input", () => {
   }
 });
 
+// Hide suggestions when clicking outside
 document.addEventListener("click", (e) => {
   if (e.target !== searchBox && e.target.parentNode !== suggestionsBox) {
     suggestionsBox.innerHTML = "";
@@ -160,7 +165,8 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Search on Enter key press
+// Search on Enter key press (also hides suggestions)
 searchBox.addEventListener("keypress", e => {
-  if (e.key === "Enter") searchBooks();
-});
+  if (e.key === "Enter") {
+    searchBooks();
+ 
