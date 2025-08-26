@@ -124,6 +124,31 @@ button:hover {
     transform: rotate(360deg);
   }
 }
+.suggestions {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  width: 65%;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 1000;
+  display: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  border-radius: 0 0 4px 4px;
+}
+
+.suggestions div {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.suggestions div:hover {
+  background-color: #f1f1f1;
+}
 
 /* Mobile responsive tweaks */
 @media only screen and (max-width: 700px) {
@@ -154,3 +179,4 @@ button:hover {
     padding: 10px;
   }
 }
+
