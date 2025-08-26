@@ -11,7 +11,7 @@ function parseCSV(text) {
 
   for (let i = 0; i < text.length; i++) {
     const char = text[i];
-    const nextChar = text[i + 1];
+    const nextChar = text[i+1];
 
     if (char === '"') {
       insideQuotes = !insideQuotes;
@@ -39,7 +39,6 @@ function parseCSV(text) {
 async function loadBooks() {
   try {
     const response = await fetch(sheetUrl);
-    if (!response.ok) throw new Error(`HTTP error! Status: ${response.status}`);
     const text = await response.text();
 
     const parsed = parseCSV(text);
@@ -84,39 +83,37 @@ function searchBooks() {
     return;
   }
 
-  // Optional debounce if gusto mo, pero simple lang muna:
-  const filtered = books.filter(book =>
-    book.title.toLowerCase().includes(query) ||
-    book.author.toLowerCase().includes(query) ||
-    book.publisher.toLowerCase().includes(query) ||
-    book.edition.toLowerCase().includes(query) ||
-    book.copies.toLowerCase().includes(query)
-  );
+  setTimeout(() => {
+    const filtered = books.filter(book =>
+      book.title.toLowerCase().includes(query) ||
+      book.author.toLowerCase().includes(query) ||
+      book.publisher.toLowerCase().includes(query) ||
+      book.edition.toLowerCase().includes(query) ||
+      book.copies.toLowerCase().includes(query)
+    );
 
-  showLoading(false);
+    showLoading(false);
 
-  if (filtered.length === 0) {
-    tbody.innerHTML = `
-      <tr><td colspan="6" class="placeholder">No results found.</td></tr>
-    `;
-  } else {
-    filtered.forEach(book => {
-      const tr = document.createElement("tr");
-      tr.innerHTML = `
-        <td>${book.title}</td>
-        <td>${book.author}</td>
-        <td>${book.publisher}</td>
-        <td>${book.copyright}</td>
-        <td>${book.edition}</td>
-        <td>${book.copies}</td>
+    if (filtered.length === 0) {
+      tbody.innerHTML = `
+        <tr><td colspan="6" class="placeholder">No results found.</td></tr>
       `;
-      tbody.appendChild(tr);
-    });
-  }
+    } else {
+      filtered.forEach(book => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${book.title}</td>
+          <td>${book.author}</td>
+          <td>${book.publisher}</td>
+          <td>${book.copyright}</td>
+          <td>${book.edition}</td>
+          <td>${book.copies}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    }
+  }, 300);
 }
-
-// Live search habang nagta-type
-document.getElementById("searchBox").addEventListener("input", searchBooks);
 
 // Search on Enter key press
 document.getElementById("searchBox").addEventListener("keypress", e => {
