@@ -37,6 +37,7 @@ function parseCSV(text) {
   return rows;
 }
 
+// Load books from Google Sheet
 async function loadBooks() {
   try {
     const response = await fetch(sheetUrl);
@@ -71,6 +72,7 @@ function showLoading(show) {
   loadingDiv.style.display = show ? "block" : "none";
 }
 
+// Perform search
 function searchBooks() {
   const query = searchBox.value.trim().toLowerCase();
   const tbody = document.querySelector("#resultsTable tbody");
@@ -122,7 +124,7 @@ function searchBooks() {
   }, 300);
 }
 
-// Live suggestions while typing
+// Live suggestions habang nagta-type
 searchBox.addEventListener("input", () => {
   const query = searchBox.value.trim().toLowerCase();
   suggestionsBox.innerHTML = "";
@@ -148,13 +150,14 @@ searchBox.addEventListener("input", () => {
         searchBox.value = match;
         suggestionsBox.innerHTML = "";
         suggestionsBox.style.display = "none";
+        searchBooks(); // auto search on click
       });
       suggestionsBox.appendChild(div);
     });
   }
 });
 
-// Hide suggestions if clicked outside
+// Hide suggestions kapag nag-click sa labas
 document.addEventListener("click", (e) => {
   if (e.target !== searchBox && e.target.parentNode !== suggestionsBox) {
     suggestionsBox.innerHTML = "";
@@ -162,12 +165,9 @@ document.addEventListener("click", (e) => {
   }
 });
 
-// Search when Enter is pressed
+// Search on Enter key
 searchBox.addEventListener("keypress", e => {
   if (e.key === "Enter") {
     searchBooks();
   }
 });
-
-// Button click already handled in HTML (onclick)
-
