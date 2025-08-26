@@ -2,7 +2,7 @@ let books = [];
 
 const sheetUrl = "https://docs.google.com/spreadsheets/d/1kNUtwm8mg-3VsmqFXeGDmf5tHF-jDmSpnUA3uliRnO8/export?format=csv&gid=0";
 
-// Helper function to parse CSV safely (handles commas inside quotes)
+// CSV parser
 function parseCSV(text) {
   const rows = [];
   let insideQuotes = false;
@@ -11,7 +11,7 @@ function parseCSV(text) {
 
   for (let i = 0; i < text.length; i++) {
     const char = text[i];
-    const nextChar = text[i+1];
+    const nextChar = text[i + 1];
 
     if (char === '"') {
       insideQuotes = !insideQuotes;
@@ -19,7 +19,7 @@ function parseCSV(text) {
       row.push(cell);
       cell = '';
     } else if ((char === '\n' || char === '\r') && !insideQuotes) {
-      if (char === '\r' && nextChar === '\n') i++; // skip CRLF
+      if (char === '\r' && nextChar === '\n') i++;
       row.push(cell);
       rows.push(row);
       row = [];
@@ -28,11 +28,12 @@ function parseCSV(text) {
       cell += char;
     }
   }
-  // Push last cell/row if exists
+
   if (cell !== '' || row.length > 0) {
     row.push(cell);
     rows.push(row);
   }
+
   return rows;
 }
 
@@ -40,12 +41,11 @@ async function loadBooks() {
   try {
     const response = await fetch(sheetUrl);
     const text = await response.text();
-
     const parsed = parseCSV(text);
 
     books = parsed
-      .slice(1) // skip header row
-      .filter(row => row.length >= 6) // at least 6 columns now
+      .slice(1)
+      .filter(row => row.length >= 6)
       .map(row => ({
         title: row[0].trim(),
         author: row[1].trim(),
@@ -63,14 +63,21 @@ async function loadBooks() {
 
 loadBooks();
 
+const searchBox = document.getElementById("searchBox");
+const suggestionsBox = document.getElementById("suggestions");
+
 function showLoading(show) {
   const loadingDiv = document.getElementById("loading");
   loadingDiv.style.display = show ? "block" : "none";
 }
 
 function searchBooks() {
-  const query = document.getElementById("searchBox").value.trim().toLowerCase();
+  const query = searchBox.value.trim().toLowerCase();
   const tbody = document.querySelector("#resultsTable tbody");
+
+  // Clear suggestions
+  suggestionsBox.innerHTML = "";
+  suggestionsBox.style.display = "none";
 
   showLoading(true);
   tbody.innerHTML = "";
@@ -115,10 +122,51 @@ function searchBooks() {
   }, 300);
 }
 
-// Search on Enter key press
-document.getElementById("searchBox").addEventListener("keypress", e => {
-  if (e.key === "Enter") searchBooks();
+// Live suggestions while typing
+searchBox.addEventListener("input", () => {
+  const query = searchBox.value.trim().toLowerCase();
+  suggestionsBox.innerHTML = "";
+  suggestionsBox.style.display = "none";
+
+  if (!query) return;
+
+  const suggestions = new Set();
+
+  books.forEach(book => {
+    if (book.title.toLowerCase().includes(query)) suggestions.add(book.title);
+    if (book.author.toLowerCase().includes(query)) suggestions.add(book.author);
+  });
+
+  const matches = Array.from(suggestions).slice(0, 10);
+
+  if (matches.length > 0) {
+    suggestionsBox.style.display = "block";
+    matches.forEach(match => {
+      const div = document.createElement("div");
+      div.textContent = match;
+      div.addEventListener("click", () => {
+        searchBox.value = match;
+        suggestionsBox.innerHTML = "";
+        suggestionsBox.style.display = "none";
+      });
+      suggestionsBox.appendChild(div);
+    });
+  }
 });
 
-// Search on button click
-document.getElementById("searchBtn").addEventListener("click", searchBooks);
+// Hide suggestions if clicked outside
+document.addEventListener("click", (e) => {
+  if (e.target !== searchBox && e.target.parentNode !== suggestionsBox) {
+    suggestionsBox.innerHTML = "";
+    suggestionsBox.style.display = "none";
+  }
+});
+
+// Search when Enter is pressed
+searchBox.addEventListener("keypress", e => {
+  if (e.key === "Enter") {
+    searchBooks();
+  }
+});
+
+// Button click already handled in HTML (onclick)
