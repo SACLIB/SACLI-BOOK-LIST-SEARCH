@@ -130,7 +130,6 @@ button:hover {
   border: 1px solid #ccc;
   border-top: none;
   max-height: 400px;
-  overflow-y: auto;
   width: 35%;
   left: 0;
   right: 0;
@@ -179,6 +178,7 @@ button:hover {
     padding: 10px;
   }
 }
+
 
 
 
