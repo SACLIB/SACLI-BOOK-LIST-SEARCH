@@ -222,7 +222,7 @@ button:hover {
   }
 
   .banner-text {
-    max-width: 400px;  /* limitahan ang lapad ng text */
+    max-width: 250px;  /* limitahan ang lapad ng text */
     font-size: 0.5rem; /* medyo liit ang font sa mobile */
     margin: 0 10px;
     text-align: center;
@@ -231,7 +231,7 @@ button:hover {
   .page-banner img.logo-left {
   max-height: 110px;
   width: auto;
-  margin-right: 20px; /* ilapit sa text */
+  margin-right: 50px; /* ilapit sa text */
   flex-shrink: 0;  /* huwag lumiliit */
   display: block;
 }
@@ -254,6 +254,7 @@ button:hover {
   z-index: -1; /* stay behind */
 } 
 }
+
 
 
 
