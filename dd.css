@@ -223,7 +223,7 @@ button:hover {
 
   .banner-text {
     max-width: 400px;  /* limitahan ang lapad ng text */
-    font-size: 1.2rem; /* medyo liit ang font sa mobile */
+    font-size: 0.5rem; /* medyo liit ang font sa mobile */
     margin: 0 10px;
     text-align: center;
   }
@@ -254,6 +254,7 @@ button:hover {
   z-index: -1; /* stay behind */
 } 
 }
+
 
 
 
