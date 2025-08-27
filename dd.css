@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('images.PNG'); 
+  background-image: url('library background.jpg'); 
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
@@ -13,7 +13,16 @@ body {
   font-family: Arial, sans-serif;
   color: rgb(15, 14, 14);
 }
-
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 126, 52, 0.4); /* malabong green */
+  z-index: -1; /* stay behind */
+}
 /* ✅ Page Banner Styling */
 .page-banner {
   display: flex;
@@ -234,5 +243,16 @@ button:hover {
   flex-shrink: 0;
   display: block;
 }
+ body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(30, 126, 52, 0.4); /* malabong green */
+  z-index: -1; /* stay behind */
+} 
 }
+
 
