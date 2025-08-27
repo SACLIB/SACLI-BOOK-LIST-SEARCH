@@ -14,27 +14,73 @@ body {
   color: rgb(15, 14, 14);
 }
 
+/* ✅ Page Banner Styling */
+.page-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center horizontally */
+  gap: 10px; /* spacing between logo and text */
+  flex-wrap: wrap;
+  background-color: #1e7e34;
+  color: #ffffff;
+  padding: 0px 0px;
+  text-align: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+  font-family: 'Georgia', serif;
+}
+
+.page-banner img.logo-left {
+  max-height: 110px;
+  width: auto;
+  margin-right: -40px; /* ilapit sa text */
+  flex-shrink: 0;  /* huwag lumiliit */
+  display: block;
+}
+
+.page-banner img.logo-right {
+  max-height: 80px;
+  width: auto;
+  margin-left: 10px; /* ilapit sa text */
+  flex-shrink: 0;
+  display: block;
+}
+
+.banner-text {
+  padding: 0 10px;
+  text-align: center;
+  max-width: 500px;  /* limitahan ang lapad ng text para hindi itulak ang logos */
+  flex-shrink: 1;    /* payagan mag-shrink kapag kailangan */
+}
+
+.banner-text h2 {
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.banner-text p {
+  margin: 5px 0 0;
+  font-size: 1.1rem;
+  font-style: italic;
+}
+
+/* 🔍 Search Section */
 .container {
   width: 95%;
   max-width: 600px;
   margin: 10px auto 5px;
   background: #fff;
-  padding: 10px;
+  padding: 5px;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
   text-align: center;
 }
 
-h1 {
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-  font-family: Georgia, 'Times New Roman', Times, serif;
-}
-
 input[type="text"] {
-  width: 65%;
-  padding: 12px;
-  margin-right: 10px;
+  width: 75%;
+  padding: 10px;
+  margin-right: 5px;
   border: 1.5px solid #ccc;
   border-radius: 4px;
 }
@@ -54,6 +100,7 @@ button:hover {
   background: #218838;
 }
 
+/* 📊 Results Section */
 #results {
   width: 95%;
   max-width: 1000px;
@@ -88,19 +135,21 @@ button:hover {
   background-color: #f9f9f9;
 }
 
-/* Column width adjustments */
 #resultsTable th:nth-child(1),
 #resultsTable td:nth-child(1) { width: 35%; }
+
 #resultsTable th:nth-child(2),
 #resultsTable td:nth-child(2),
 #resultsTable th:nth-child(3),
 #resultsTable td:nth-child(3) { width: 15%; }
+
 #resultsTable th:nth-child(4),
 #resultsTable td:nth-child(4),
 #resultsTable th:nth-child(5),
 #resultsTable td:nth-child(5) { width: 5%; }
+
 #resultsTable th:nth-child(6),
-#resultsTable td:nth-child(6) { width: 5%; } /* Copies column */
+#resultsTable td:nth-child(6) { width: 5%; }
 
 .placeholder {
   text-align: center;
@@ -108,7 +157,7 @@ button:hover {
   color: #666;
 }
 
-/* Spinner Style */
+/* 🔄 Spinner Style */
 .spinner {
   margin: 0 auto;
   width: 40px;
@@ -125,7 +174,7 @@ button:hover {
   }
 }
 
-/* Mobile responsive tweaks */
+/* 📱 Mobile Responsive Tweaks */
 @media only screen and (max-width: 700px) {
   .container,
   #results {
@@ -153,4 +202,37 @@ button:hover {
   #resultsTable td {
     padding: 10px;
   }
+
+  /* PAGE BANNER MOBILE ADJUSTMENTS */
+  .page-banner {
+    flex-wrap: nowrap; /* para hindi mag-wrap ang logos at text */
+    justify-content: space-between; /* logos left and right */
+    align-items: center;
+    padding: 10px 15px;
+    max-width: 100%;
+  }
+
+  .banner-text {
+    max-width: 400px;  /* limitahan ang lapad ng text */
+    font-size: 1.2rem; /* medyo liit ang font sa mobile */
+    margin: 0 10px;
+    text-align: center;
+  }
+
+  .page-banner img.logo-left {
+  max-height: 110px;
+  width: auto;
+  margin-right: -40px; /* ilapit sa text */
+  flex-shrink: 0;  /* huwag lumiliit */
+  display: block;
 }
+
+.page-banner img.logo-right {
+  max-height: 80px;
+  width: auto;
+  margin-left: 10px; /* ilapit sa text */
+  flex-shrink: 0;
+  display: block;
+}
+}
+
