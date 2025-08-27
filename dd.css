@@ -231,7 +231,7 @@ button:hover {
   .page-banner img.logo-left {
   max-height: 110px;
   width: auto;
-  margin-right: -40px; /* ilapit sa text */
+  margin-right: 20px; /* ilapit sa text */
   flex-shrink: 0;  /* huwag lumiliit */
   display: block;
 }
@@ -254,5 +254,6 @@ button:hover {
   z-index: -1; /* stay behind */
 } 
 }
+
 
 
