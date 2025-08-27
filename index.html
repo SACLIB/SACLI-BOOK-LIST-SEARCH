@@ -9,24 +9,35 @@
 </head>
 <body>
 
-  <!-- Search Form -->
+  <!-- ✅ Page Banner -->
+  <div class="page-banner">
+    <img src="SACLI LOGO.png" alt="SACLI Logo" class="logo-left">
+
+    <div class="banner-text">
+      <h2>Welcome to SACLI Library</h2>
+      <p>Online Public Access Catalog (OPAC)</p>
+    </div>
+
+    <img src="SACLI LIBRARY LOGO 2.png" alt="Library Logo" class="logo-right">
+  </div>
+
+  <!-- 🔍 Search Form -->
   <div class="container">
-    <h1>SACLI Library OPAC</h1>
     <input
       type="text"
       id="searchBox"
       placeholder="Search by Title or Author..."
       autofocus
-    />	
+    />
     <button id="searchBtn" onclick="searchBooks()">Search</button>
 
-    <!-- Loading Spinner -->
+    <!-- 🔄 Loading Spinner -->
     <div id="loading" style="display:none; margin-top: 10px; text-align:center;">
       <div class="spinner"></div>
     </div>
   </div>
 
-  <!-- Results Table -->
+  <!-- 📚 Results Table -->
   <div id="results">
     <table id="resultsTable">
       <thead>
@@ -49,6 +60,7 @@
     </table>
   </div>
 
+  <!-- JS File -->
   <script src="dd.js"></script>
 </body>
 </html>
