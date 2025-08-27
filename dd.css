@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('library background.jpg'); 
+  background-image: url('library\ background.jpg'); 
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
@@ -13,6 +13,7 @@ body {
   font-family: Arial, sans-serif;
   color: rgb(15, 14, 14);
 }
+
 body::before {
   content: "";
   position: fixed;
@@ -21,8 +22,9 @@ body::before {
   width: 100%;
   height: 100%;
   background-color: rgba(30, 126, 52, 0.4); /* malabong green */
-  z-index: -1; /* stay behind */
+  z-index: -1s; /* stay behind */
 }
+
 /* ✅ Page Banner Styling */
 .page-banner {
   display: flex;
@@ -222,8 +224,8 @@ button:hover {
   }
 
   .banner-text {
-    max-width: 250px;  /* limitahan ang lapad ng text */
-    font-size: 0.5rem; /* medyo liit ang font sa mobile */
+    max-width: 400px;  /* limitahan ang lapad ng text */
+    font-size: 1.2rem; /* medyo liit ang font sa mobile */
     margin: 0 10px;
     text-align: center;
   }
@@ -231,7 +233,7 @@ button:hover {
   .page-banner img.logo-left {
   max-height: 110px;
   width: auto;
-  margin-right: 50px; /* ilapit sa text */
+  margin-right: -40px; /* ilapit sa text */
   flex-shrink: 0;  /* huwag lumiliit */
   display: block;
 }
@@ -243,7 +245,7 @@ button:hover {
   flex-shrink: 0;
   display: block;
 }
- body::before {
+body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -253,9 +255,6 @@ button:hover {
   background-color: rgba(30, 126, 52, 0.4); /* malabong green */
   z-index: -1; /* stay behind */
 } 
+
 }
-
-
-
-
 
