@@ -268,7 +268,7 @@ button:hover {
 }
 
 /* For screens 320px to 420px - logos left and right, text center */
-@media only screen and (min-width: 300px) and (max-width: 420px) {
+@media only screen and (min-width: 300px) and (max-width: 470px) {
   .page-banner {
     flex-direction: row; /* logos left and right, text center */
     justify-content: space-between;
@@ -366,3 +366,4 @@ button:hover {
     z-index: -1; /* stay behind */
   }
 }
+
