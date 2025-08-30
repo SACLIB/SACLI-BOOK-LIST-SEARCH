@@ -147,8 +147,9 @@ button:hover {
 }
 
 #resultsTable th {
-  background-color: #f2f2f2;
+  background-color: #1e7e34;
   font-weight: 600;
+  color: white;
 }
 
 #resultsTable tbody tr:hover {
@@ -366,5 +367,6 @@ button:hover {
     z-index: -1; /* stay behind */
   }
 }
+
 
 
