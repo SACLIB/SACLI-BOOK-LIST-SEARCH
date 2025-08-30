@@ -129,7 +129,7 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  padding: 20px;
+  padding: 10px;
   max-height: 465px;
   overflow-y: auto;
 }
@@ -142,7 +142,7 @@ button:hover {
 
 #resultsTable th, #resultsTable td {
   border: 1px solid #ccc;
-  padding: 12px 15px;
+  padding: 8px 18px;
   text-align: center;
 }
 
@@ -155,7 +155,7 @@ button:hover {
 #resultsTable tbody tr:hover {
   background-color: #f9f9f9;
 }
-
+  
 #resultsTable th:nth-child(1),
 #resultsTable td:nth-child(1) { width: 35%; }
 
@@ -367,6 +367,7 @@ button:hover {
     z-index: -1; /* stay behind */
   }
 }
+
 
 
 
