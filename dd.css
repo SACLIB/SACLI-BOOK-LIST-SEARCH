@@ -314,6 +314,10 @@ button:hover {
     font-size: 0.7rem;  
     margin-top: 4px;
   }
+   #results {
+    max-height: 650px;
+    font-size: 14px;
+  }
   body::before {
     content: "";
     position: fixed;
@@ -367,6 +371,7 @@ button:hover {
     z-index: -1; /* stay behind */
   }
 }
+
 
 
 
