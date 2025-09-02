@@ -42,7 +42,7 @@ body::before {
   padding: 0px 0px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
+  margin-bottom: 40px;
   font-family: 'Georgia', serif;
 }
 body::before {
@@ -376,6 +376,7 @@ button:hover {
     z-index: -1; /* stay behind */
   }
 }
+
 
 
 
