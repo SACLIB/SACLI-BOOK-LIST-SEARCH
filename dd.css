@@ -9,10 +9,9 @@ body {
   background-size: cover;
   background-position: left;
   background-repeat: no-repeat;
-  height: 100%;
+  height: 110vh;
   font-family: Arial, sans-serif;
   color: rgb(15, 14, 14);
-  position: fixed;
 }
 
 body::before {
@@ -40,7 +39,6 @@ body::before {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   margin-bottom: 10px;
   font-family: 'Georgia', serif;
-  position: relative;
 }
 body::before {
     content: "";
@@ -373,6 +371,7 @@ button:hover {
     z-index: -1; /* stay behind */
   }
 }
+
 
 
 
