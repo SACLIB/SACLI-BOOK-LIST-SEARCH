@@ -6,7 +6,7 @@ body {
   margin: 0;
   padding: 0;
   background-image: url('library\ background.jpg'); 
-  background-size: cover;
+  background-size: 100%;
   background-position: left;
   background-repeat: no-repeat;
   height: 100%;
@@ -371,6 +371,7 @@ button:hover {
     z-index: -1; /* stay behind */
   }
 }
+
 
 
 
