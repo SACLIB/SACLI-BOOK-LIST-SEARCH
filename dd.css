@@ -27,6 +27,7 @@ body::before {
 
 /* ✅ Page Banner Styling */
 .page-banner {
+  position: fixed;
   display: flex;
   align-items: center;
   justify-content: center; /* center horizontally */
@@ -371,6 +372,7 @@ button:hover {
     z-index: -1; /* stay behind */
   }
 }
+
 
 
 
