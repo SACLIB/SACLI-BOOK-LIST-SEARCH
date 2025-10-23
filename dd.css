@@ -3,8 +3,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   background: 
-    linear-gradient(to bottom, #d3d3d2, #d3d4d3),
-    url("library.png") no-repeat center center fixed;
+  linear-gradient(to bottom, #d3d3d2, #d3d4d3),
+  url("library.png") no-repeat center center fixed;
   background-size: 1000px;
   background-blend-mode: multiply;
 }
@@ -142,7 +142,7 @@ body {
 #resultsTable th, #resultsTable td {
   padding: 10px;
   text-align: center; 
-  border: 1px solid #f5f4f4;
+  border: 1px solid #312f2f;
 }
 
 #resultsTable th {
@@ -397,7 +397,7 @@ body {
 #journalResults th, #journalResults td {
   padding: 8px 5px;
   text-align: center; 
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid #312f2f;
 }
 #journalResults thead {
   background-color: #2b7a4b;
@@ -479,7 +479,7 @@ body {
 #ebooksResults th, #ebooksResults td {
   padding: 8px 5px;
   text-align: center; 
-  border: 1px solid rgb(255, 255, 255);
+  border: 1px solid #312f2f;
 }
 
 #ebooksResults thead {
@@ -525,7 +525,7 @@ body {
 
 /* Thesis / General Table Styling */
 #thesisTable th, #thesisTable td {
-  border: 1px solid #ccc;
+  border: 1px solid #312f2f;
   text-align: left; 
   padding: 10px;
   background-color: white;
@@ -576,6 +576,7 @@ body {
 #thesisTable th:nth-child(3),
 #thesisTable th:nth-child(4),
 #thesisTable th:nth-child(4) { width: 10%; }
+
 
 
 
