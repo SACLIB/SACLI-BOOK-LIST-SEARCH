@@ -1,162 +1,155 @@
-* {
-  box-sizing: border-box;
-}
-
+/* General Page Setup */
 body {
-  margin: 0;
-  padding: 0;
-  background-image: url('library\ background.jpg'); 
-  background-size: cover;
-  background-position: left;
-  background-repeat: no-repeat;
-  min-height: 100vh;
   font-family: Arial, sans-serif;
-  color: rgb(15, 14, 14);
+  margin: 0;
+  background: 
+    linear-gradient(to bottom, #d3d3d2, #d3d4d3),
+    url("library.png") no-repeat center center fixed;
+  background-size: 1000px;
+  background-blend-mode: multiply;
 }
 
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(30, 126, 52, 0.4); /* malabong green */
-  z-index: -1; /* stay behind */
-}
-
-/* ✅ Page Banner Styling */
 .page-banner {
-  z-index: 1000;
-  display: flex;
-  align-items: center;
-  justify-content: center; /* center horizontally */
-  gap: 10px; /* spacing between logo and text */
-  flex-wrap: wrap;
-  background-color: #1e7e34;
-  color: #ffffff;
-  padding: 0px 0px;
   text-align: center;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  margin-bottom: 10px;
-  font-family: 'Georgia', serif;
-}
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30, 126, 52, 0.4); /* malabong green */
-    z-index: -1; /* stay behind */
-}
-.page-banner img.logo-left {
-  max-height: 110px;
-  width: auto;
-  margin-right: -40px; /* ilapit sa text */
-  flex-shrink: 0;  /* huwag lumiliit */
-  display: block;
+  background: linear-gradient(to bottom, #f2f2f0, #b8bdb8);
+  padding: 20px;
+  position:relative;
+  height: 60px;
+  border-bottom: 3px solid #8e998e34;
+  box-shadow: 0 7px 12px rgba(0, 0, 0, 0.37);
 }
 
-.page-banner img.logo-right {
-  max-height: 80px;
-  width: auto;
-  margin-left: 10px; /* ilapit sa text */
-  flex-shrink: 0;
-  display: block;
+.logo-left, .logo-right {
+  width: 80px;
+  position: absolute;
+  top: 5px;
 }
 
-.banner-text {
-  padding: 0 10px;
-  text-align: center;
-  max-width: 500px;  /* limitahan ang lapad ng text para hindi itulak ang logos */
-  flex-shrink: 1;    /* payagan mag-shrink kapag kailangan */
-}
+.logo-left { left: 40px; }
+.logo-right { right: 40px; }
 
 .banner-text h2 {
   margin: 0;
-  font-size: 2rem;
+  font-size: 1.5rem;
+  color: #000000;
   font-weight: bold;
+  margin-top: -17px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 .banner-text p {
-  margin: 5px 0 0;
+  margin: 5px 0 20px;
   font-size: 1.1rem;
-  font-style: italic;
+  color: #0a0a0a;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
-/* 🔍 Search Section */
+/* 🧭 Container for links + search bar */
 .container {
-  width: 95%;
-  max-width: 600px;
-  margin: 10px auto 5px;
-  background: #fff;
-  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: -14px;
+}
+
+/* 📚 Resource links */
+.resource-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-start;
+}
+
+.resource-links a {
+  text-decoration: none;
+  background-color: #a4a7a400;
+  color: rgb(255, 255, 255);
+  padding: 7px 13px;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.15);
-  text-align: center;
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  transition: 0.3s;
 }
 
-input[type="text"] {
-  width: 75%;
+.resource-links a:hover {
+  background-color: #1f5b36;
+  transform: scale(1.05);
+}
+
+/* 🔍 Search box */
+.search-box {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box input {
   padding: 10px;
-  margin-right: 5px;
-  border: 1.5px solid #ccc;
-  border-radius: 4px;
+  width: 350px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
 }
 
-button {
-  padding: 12px 20px;
-  background: #1e7e34;
+.search-box button {
+  background-color: #2b7a4b;
   color: white;
   border: none;
-  border-radius: 4px;
-  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: 0.3s;
 }
 
-button:hover {
-  background: #28a745;
+.search-box button:hover {
+  background-color: #1f5b36;
 }
 
-/* 📊 Results Section */
+/* 🌀 Spinner */
+.spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #2b7a4b;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* 📊 Table Styling */
 #results {
-  width: 95%;
-  max-width: 1000px;
-  margin: 1px auto 50px;
-  background: #fff;
+  margin: 10px auto;
+  width: 90%;
+  overflow-x: auto;
   border: 1px solid #ccc;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
-  padding: 10px;
-  max-height: 465px;
-  overflow-y: auto;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  font-size: 1rem;
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #resultsTable {
   width: 100%;
   border-collapse: collapse;
-  font-size: 16px;
+  background: white;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 #resultsTable th, #resultsTable td {
-  border: 1px solid #ccc;
-  padding: 8px 18px;
-  text-align: center;
+  padding: 10px;
+  text-align: center; 
+  border: 1px solid #f5f4f4;
 }
 
 #resultsTable th {
-  background-color: #1e7e34;
-  font-weight: 600;
+  background-color: #2b7a4b;
   color: white;
 }
 
-#resultsTable tbody tr:hover {
-  background-color: #f9f9f9;
-}
-  
 #resultsTable th:nth-child(1),
 #resultsTable td:nth-child(1) { width: 35%; }
 
@@ -179,214 +172,410 @@ button:hover {
   color: #666;
 }
 
-/* 🔄 Spinner Style */
-.spinner {
-  margin: 0 auto;
-  width: 40px;
-  height: 40px;
-  border: 5px solid #ccc;
-  border-top: 5px solid #28a745;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
 
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-/* 📱 Mobile Responsive Tweaks */
-@media only screen and (max-width: 700px) {
-  .container,
-  #results {
-    width: 90%;
-    padding: 20px;
+/* 📱📲 MOBILE RESPONSIVENESS */
+@media (max-width: 900px) {
+  .page-banner {
+    height: auto;
+    padding: 15px;
   }
 
-  input[type="text"],
-  button {
+  .banner-text h2 {
+    font-size: 1.5rem;
+    margin-top: 10px;
+  }
+
+  .banner-text p {
+    font-size: 1rem;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .resource-links {
+    justify-content: center;
+  }
+
+  .resource-links a {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
+
+  .search-box {
+    flex-direction: column;
     width: 100%;
-    display: block;
-    margin: 5px auto;
+  }
+
+  .search-box input {
+    width: 70%;
+  }
+
+  .search-box button {
+    width: 40%;
   }
 
   #results {
-    max-height: 600px;
-    font-size: 14px;
-  }
-
-  #resultsTable {
-    font-size: 14px;
+    width: 100%;
+    margin: 15px auto;
   }
 
   #resultsTable th,
   #resultsTable td {
-    padding: 10px;
+    font-size: 0.8rem;
+    padding: 8px;
   }
 
-  /* PAGE BANNER MOBILE ADJUSTMENTS */
-  .page-banner {
-    flex-wrap: nowrap; /* para hindi mag-wrap ang logos at text */
-    justify-content: space-between; /* logos left and right */
-    align-items: center;
-    padding: 10px 15px;
-    max-width: 100%;
-  }
-
-  .banner-text {
-    max-width: 400px;  /* limitahan ang lapad ng text */
-    font-size: 1.2rem; /* medyo liit ang font sa mobile */
-    margin: 0 10px;
-    text-align: center;
-  }
-
-  .page-banner img.logo-left {
-    max-height: 110px;
-    width: auto;
-    margin-right: -40px; /* ilapit sa text */
-    flex-shrink: 0;  /* huwag lumiliit */
+  #resultsTable {
     display: block;
-  }
-
-  .page-banner img.logo-right {
-    max-height: 80px;
-    width: auto;
-    margin-left: 10px; /* ilapit sa text */
-    flex-shrink: 0;
-    display: block;
-  }
-
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30, 126, 52, 0.4); /* malabong green */
-    z-index: -1; /* stay behind */
+    overflow-x: auto;
   }
 }
 
-/* For screens 320px to 420px - logos left and right, text center */
-@media only screen and (min-width: 300px) and (max-width: 520px) {
-  .page-banner {
-    flex-direction: row; /* logos left and right, text center */
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 12px;
-    gap: 5px;
-    height: 70px;
-  }
-
-  .page-banner img.logo-left {
-    max-height: 60px;
-    margin: 5px 0;
-    margin-left: -20px;  /* i-slide pa left */
-    margin-right: -50px; /* adjust para lumawak ang space sa text */
-    flex-shrink: 0;
-    display: block; 
-    margin-top: -15px;
-    margin-bottom: -15px;
-  }
-
-  .page-banner img.logo-right {
-    max-height: 45px;
-    margin-right: 0;
-    margin-left: -30px;
-    margin-top: -15px;
-    margin-bottom: -15px;
-  }
-
-  .banner-text {
-    max-width: 90%;
-    padding: 0 8px;
-
-  }
-
+/* 📱 Extra small devices (phones under 500px) */
+@media (max-width: 500px) {
   .banner-text h2 {
-    font-size: 1rem;
-    margin: 0;
-    margin-top: -8px;
+    font-size: 1.1rem;
+    margin-top: 5px;
   }
 
-  .banner-text p {
-    font-size: 0.7rem;  
-    margin-top: 4px;
+  .logo-left, .logo-right {
+  width: 43px;
+  position: absolute;
+  top: 5px;
   }
-   #results {
-    max-height: 650px;
-    font-size: 14px;
-  }
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30, 126, 52, 0.4); /* malabong green */
-    z-index: -1; /* stay behind */
-  }
-}
-
-/* For screens less than 320px (optional, stacked layout) */
-@media only screen and (max-width: 319px) {
-  .page-banner {
-    flex-direction: column;
-    align-items: center;
-    padding: 12px;
-    text-align: center;
-  }
-
-  .page-banner img.logo-left,
-  .page-banner img.logo-right {
-    max-height: 40px;
-    margin: 5px 0;
-  }
-
-  .banner-text {
-    max-width: 90%;
-    font-size: 0.9rem;
-    padding: 0 8px;
-  }
-
-  .banner-text h2 {
-    font-size: 1rem;
-    margin: 0;
-  }
-
+  .logo-left { left: 5px; }
+  .logo-right { right: 5px; }
   .banner-text p {
     font-size: 0.8rem;
-    margin-top: 4px;
   }
-  body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(30, 126, 52, 0.4); /* malabong green */
-    z-index: -1; /* stay behind */
+
+  .resource-links a {
+    display: block;
+    width: 50%;
+    text-align: center;
+  }
+
+  .container {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .search-box input {
+    width: 80%;
+    padding: 5px;
+  }
+
+  .search-box button {
+    width: 60%;
+    padding: 5px;
+  }
+
+  .resource-links a {
+    padding: 5px;
   }
 }
 
 
+/* ✅🍔 HAMBURGER MENU (LEFT SIDE VERSION) */
+.menu-toggle {
+  display: none;
+  background-color: #1e6e3ecc;
+  color: rgb(248, 248, 248);
+  border: none;
+  font-size: 1.7rem;
+  padding: 3px 5px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+  position: absolute;
+  left: 20px;
+  top: 60px;
+  z-index: 1000;
+  margin-top: 70px;
+}
+
+.menu-toggle:hover {
+  background-color: #1f5b36;
+}
+
+/* 📱 MOBILE VIEW: Show hamburger, hide links */
+@media (min-width: 501px) and (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .resource-links {
+    display: none; /* hidden by default */
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(43, 122, 75, 0.15);
+    padding: 10px 0;
+    border-radius: 8px;
+    margin-top: 10px; /* para di dumikit sa icon */
+  }
+
+  .resource-links.active {
+    display: flex; /* show when toggled */
+  }
+
+  .resource-links a {
+    display: block;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #2b7a4b;
+    color: white;
+    transition: 0.3s;
+  }
+
+  .resource-links a:hover {
+    background-color: #1f5b36;
+  }
+}
+
+/* 📱 MOBILE VIEW: Show hamburger, hide links */
+@media (max-width: 500px) {
+  .menu-toggle {
+    display: block;
+    left: 10px;
+    top: 30px;
+    margin-top: 70px;
+    font-size: 1.2rem;
+  }
+
+  .resource-links {
+    display: none; /* hidden by default */
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(43, 122, 75, 0.15);
+    padding: 10px 0;
+    border-radius: 8px;
+    margin-top: 10px; /* para di dumikit sa icon */
+  }
+
+  .resource-links.active {
+    display: flex; /* show when toggled */
+  }
+
+  .resource-links a {
+    display: block;
+    width: 80%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #2b7a4b;
+    color: white;
+    transition: 0.3s;
+  }
+
+  .resource-links a:hover {
+    background-color: #1f5b36;
+  }
+}
+
+/* 📖 Journal Results Table Styling */
+#journalResults table {
+  width: 100%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: rgb(255, 255, 255);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+
+#journalResults th, #journalResults td {
+  padding: 8px 5px;
+  text-align: center; 
+  border: 1px solid rgb(255, 255, 255);
+}
+#journalResults thead {
+  background-color: #2b7a4b;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+#journalResults tbody tr:hover {
+  background-color: rgba(55, 197, 79, 0.15);
+  transform: scale(1.01);
+  transition: all 0.2s ease;
+}
+
+#journalResults .placeholder {
+  text-align: center;
+  color: #747272;
+  padding: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+#journalTable th:nth-child(1),
+#journalTable th:nth-child(1) { width: 40%; } 
+
+#journalTable th:nth-child(2),
+#journalTable th:nth-child(2) { width: 25%; } 
+
+#journalTable th:nth-child(3),
+#journalTable th:nth-child(3) { width: 20%; } 
+
+#journalTable th:nth-child(4),
+#journalTable th:nth-child(4),
+#journalTable th:nth-child(5),
+#journalTable th:nth-child(5) { width: 15%; } 
+
+
+
+/* Spinner for Journal Table */
+#journalResults .spinner {
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-top: 4px solid #37c54f; /* green para match sa table header */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 1s linear infinite;
+  display: inline-block;
+  margin: 0 auto; /* center sa table cell */
+}
+
+#journalResults td.spinner-cell {
+  text-align: center; /* center the spinner in the cell */
+  padding: 20px 0;   /* space around spinner */
+}
+
+.spinner-cell {
+  text-align: center;       /* horizontal centering */
+  vertical-align: middle;   /* vertical centering */
+  padding: 10px 0;
+}
+
+.spinner-cell .spinner {
+  display: inline-block;    /* make sure spinner respects text-align */
+}
+
+#ebookTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+/* 📖 eBooks Results Table Styling */
+#ebooksResults table {  
+  background: rgb(255, 255, 255); 
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+}
+#ebooksResults th, #ebooksResults td {
+  padding: 8px 5px;
+  text-align: center; 
+  border: 1px solid rgb(255, 255, 255);
+}
+
+#ebooksResults thead {
+  background-color: #2b7a4b;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+.placeholder {
+  text-align: center;
+  color: #777;
+  padding: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+/* Spinner design */
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #59ce6c;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+
+#ebooksTable th:nth-child(1),
+#ebooksTable th:nth-child(1) { width: 40%; } 
+
+#ebooksTable th:nth-child(2),
+#ebooksTable th:nth-child(2) { width: 30%; } 
+#ebooksTable th:nth-child(3),
+#ebooksTable th:nth-child(3) { width: 10%; } 
 
 
 
 
+/* Thesis / General Table Styling */
+#thesisTable th, #thesisTable td {
+  border: 1px solid #ccc;
+  text-align: left; 
+  padding: 10px;
+  background-color: white;
+}
 
+#thesisTable th {
+  background-color: #2b7a4b;
+  color: white;
+  text-align: center;
+}
 
+#thesisTable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
 
+.placeholder {
+  text-align: center;
+  color: #777;
+  padding: 20px;
+}
 
+/* Spinner design */
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 4px solid #ccc;
+  border-top: 4px solid #4aa759;
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+  margin: 0 auto;
+}
 
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
 
+.spinner-cell {
+  text-align: center;
+  padding: 20px;
+}
+#thesisTable th:nth-child(1),
+#thesisTable th:nth-child(1) { width: 60%; }
 
+#thesisTable th:nth-child(2),
+#thesisTable th:nth-child(2) { width: 30%; }
 
-
+#thesisTable th:nth-child(3),
+#thesisTable th:nth-child(3),
+#thesisTable th:nth-child(4),
+#thesisTable th:nth-child(4) { width: 10%; }
 
 
 
