@@ -6,34 +6,104 @@
   <title>SACLI Library OPAC</title>
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="dd.css" />
+  <style>
+    /* 📚 Open Access Section only */
+    #openAccessSection {
+      display: none;
+      margin: 30px auto;
+      width: 90%;
+      max-width: 900px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.192);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 0 12px rgba(0, 0, 0, 0.3);
+    }
+
+    #openAccessSection h3 {
+      color: #ffffff;
+      font-size: 2rem;
+      margin-bottom: 25px;
+      margin-top: -10px;
+      font-family: Georgia, 'Times New Roman', Times, serif;
+      font-weight: bold;
+      text-shadow: 0 0 8px rgba(0,0,0,0.3);
+    }
+
+    #openAccessSection .links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 25px;
+    }
+
+    #openAccessSection a {
+      display: block;
+      padding: 12px;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 10px;
+      background: rgba(112, 121, 113, 0.534);
+      text-decoration: none;
+      color: #ffffff;
+      font-weight: bold;
+      transition: all 0.25s ease;
+    }
+
+    #openAccessSection a:hover {
+      color: #37c54f;
+      border-color: #37c54f;
+      background: rgba(55, 197, 79, 0.15);
+      transform: scale(1.04);
+      box-shadow: 0 0 8px rgba(55, 197, 79, 0.4);
+    }
+
+    @media (max-width: 700px) {
+      #openAccessSection .links-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .search-box input:disabled,
+    .search-box button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  </style>
 </head>
 <body>
 
   <!-- ✅ Page Banner -->
   <div class="page-banner">
-    <img src="SACLI LOGO.png" alt="SACLI Logo" class="logo-left">
+    <img src="library.png" alt="SACLI Logo" class="logo-left">    
 
     <div class="banner-text">
       <h2>Welcome to SACLI Library</h2>
       <p>Online Public Access Catalog (OPAC)</p>
     </div>
 
-    <img src="SACLI LIBRARY LOGO 2.png" alt="Library Logo" class="logo-right">
-  </div>
+    <img src="SACLI_LIBRARY_LOGO_2-removebg-preview.png" alt="Library Logo" class="logo-right">
 
-  <!-- 🔍 Search Form -->
-  <div class="container">
-    <input
-      type="text"
-      id="searchBox"
-      placeholder="Search by Title or Author..."
-      autofocus
-    />
-    <button id="searchBtn" onclick="searchBooks()">Search</button>
+    <!-- 🔍 Search + Resource Links Container -->
+    <div class="container">
+      <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
-    <!-- 🔄 Loading Spinner -->
-    <div id="loading" style="display:none; margin-top: 10px; text-align:center;">
-      <div class="spinner"></div>
+      <div class="resource-links">
+        <a href="javascript:void(0)" onclick="showHome()">Home</a>
+        <a href="javascript:void(0)" onclick="toggleOpenAccess()">Open Access Links</a>
+        <a href="javascript:void(0)" onclick="showJournalResults()">Journals</a>
+        <a href="javascript:void(0)" onclick="showEbooks()">E-Books</a>
+        <a href="javascript:void(0)" onclick="showTheses()">Thesis</a>
+      </div>
+
+      <div class="search-box">
+        <input type="text" id="searchBox" placeholder="Search by Title or Author..." autofocus />
+        <button id="searchBtn">Search</button>
+      </div>
+
+      <div id="loading" style="display:none; margin-top: 10px; text-align:center;">
+        <div class="spinner"></div>
+      </div>
     </div>
   </div>
 
@@ -50,17 +120,120 @@
           <th>Copies</th> 
         </tr>
       </thead>
-      <tbody>
+      <tbody id="resultsTableBody">
         <tr>
-          <td colspan="6" class="placeholder">
-            No results yet. Please enter a search query.
-          </td>
+          <td colspan="6" class="placeholder">No results yet. Please enter a search query.</td>
         </tr>
       </tbody>
     </table>
   </div>
 
-  <!-- JS File -->
+  <!-- 🌐 Open Access Section -->
+  <div id="openAccessSection">
+    <h3>📚 Open Access Resources</h3>
+    <div class="links-grid">
+        <a href="https://www.planetebook.com/" target="_blank">Planet eBook</a>
+        <a href="https://opendoar.ac.uk/" target="_blank">OPEN Directory of Open Access Repositories (OpenDOAR)</a>
+        <a href="https://lawphil.net/" target="_blank">The LawPhil Project</a>
+        <a href="https://oatd.org/" target="_blank">Open Access Theses and Dissertation</a>
+        <a href="https://authorservices.wiley.com/author-resources/Journal-Authors/open-access/index.html" target="_blank">Wiley Open Access</a>
+        <a href="https://www.biomedcentral.com/" target="_blank">BioMed Central</a>
+        <a href="https://karger.com/collection/23/Dental-Medicine" target="_blank">Science Direct</a>
+        <a href="https://sites.google.com/view/depedopeneducationalresources/home" target="_blank">DEPED Open Educational Resources</a>
+        <a href="https://www.gutenberg.org/" target="_blank">Project Gutenberg</a>
+        <a href="https://standardebooks.org/" target="_blank">Standard eBooks</a>
+        <a href="https://www.openbookpublishers.com/" target="_blank">Open Book Publishers</a>
+        <a href="https://www.oapen.org/home" target="_blank">OAPEN (Open Access Publishing in European Network)</a>
+        <a href="https://chestofbooks.com/" target="_blank">Chest Books</a>
+        <a href="https://nap.nationalacademies.org/" target="_blank">The National Academies Press</a>
+        <a href="https://www.hathitrust.org/" target="_blank">Hathi Trust Digital Library</a>
+        <a href="https://www.frontiersin.org/journals/psychology" target="_blank">Frontiers in Psychology</a>
+        <a href="https://advanced.onlinelibrary.wiley.com/journal/2365709X" target="_blank">Technology of Advanced Materials</a>
+        <a href="https://doaj.org/" target="_blank">Directory of Open Access Journals</a>
+        <a href="https://karger.com/collection/23/Dental-Medicine" target="_blank">Karger (Dentistry Journal)</a>
+        <a href="https://link.springer.com/" target="_blank">Springer Link</a>
+        <a href="https://journals.plos.org/plosone/" target="_blank">PLOS ONE (General Science)</a>
+        <a href="https://www.doabooks.org/" target="_blank">Directory of Open Access Books</a>
+        <a href="https://www.intechopen.com/" target="_blank">InTech Open</a>
+        <a href="https://open.umn.edu/opentextbooks" target="_blank">Open Textbook Library</a>
+        <a href="https://www.academia.edu/36326173/Advances_in_Production_Engineering_and_Management" target="_blank">Advances in Production Engineering and Management</a>
+        <a href="https://www.ijbs.com/" target="_blank">International Journal of Biological Science</a>
+        <a href="https://americanspaces.state.gov/" target="_blank">American Spaces</a>
+        <a href="https://phlconnect.ched.gov.ph/home" target="_blank">PhilCHED Connect</a>
+    </div>
+  </div>
+
+  <!-- 📚 Journal Results Table -->
+  <div id="journalResults" style="display:none; margin-top: 10px; text-align:center;">
+    <table id="journalTable" style="width:90%; max-width:1200px; margin:auto; border-collapse:collapse;">
+      <thead style="background-color:#2b7a4b; color:white;">
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Frequency</th>
+          <th>Copyright</th>
+          <th>Volume</th>
+          <th>Issue</th>  
+        </tr>
+      </thead>
+      <tbody id="journalTableBody">
+        <tr><td  class="placeholder" colspan="6" style="text-align: center;">No journal results yet. Please enter a search query.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 📘 E-Books Results -->
+  <div id="ebooksResults" style="display:none; margin-top: 10px; text-align:center;">
+    <table id="ebooksTable" style="width:90%; max-width:1200px; margin:auto; border-collapse:collapse;">
+      <thead style="background-color:#2b7a4b; color:white;">
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Copyright</th>
+        </tr>
+      </thead>
+      <tbody id="ebooksTableBody">
+        <tr><td colspan="3" class="placeholder">No e-book results yet. Please enter a search query.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 📜 Thesis Results Table -->
+  <div id="thesisResults" style="display:none; margin-top: 10px; text-align:center;">
+    <table id="thesisTable" style="width:90%; max-width:1200px; margin:auto; border-collapse:collapse;">
+      <thead style="background-color:#2b7a4b; color:white;">
+        <tr>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Number</th>
+          <th>Copyright</th>
+        </tr>
+      </thead>
+      <tbody id="thesisTableBody">
+        <tr><td colspan="4" class="placeholder" style="text-align: center;">No thesis results yet. Please enter a search query.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- 📜 JS File -->
   <script src="dd.js"></script>
+
+  <!-- 🍔 Hamburger menu toggle only -->
+  <script>
+    function toggleMenu() {
+      const menu = document.querySelector('.resource-links');
+      menu.classList.toggle('active');
+    }
+
+    document.querySelectorAll('.resource-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 900) {
+          const menu = document.querySelector('.resource-links');
+          menu.classList.remove('active');
+        }
+      });
+    });
+  </script>
+
 </body>
 </html>
